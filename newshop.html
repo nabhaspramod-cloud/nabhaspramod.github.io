@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>igprints.ie — Posters & Custom Prints</title>
+  <meta name="description" content="igprints.ie — Mini & Medium posters, A4, A3, and custom print services in Ireland. High‑quality prints with easy ordering and checkout." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10; --surface:#111317; --card:#161a20; --text:#e8eef3; --muted:#9fb0bf; --brand:#3fbdf1; --brand2:#7c5cff; --ok:#29d398; --warn:#ffb020; --danger:#ff5a5f;
+      --radius:18px; --radius-sm:12px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#0e1117);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,12,16,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#0b0c10;font-weight:800}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .tag{font-size:12px;color:var(--muted)}
+
+    .menu{display:flex;gap:10px;flex-wrap:wrap}
+    .menu a{padding:10px 14px;border-radius:999px;color:var(--text);border:1px solid rgba(255,255,255,.08);transition:.2s}
+    .menu a.active, .menu a:hover{background:linear-gradient(135deg,rgba(63,189,241,.15),rgba(124,92,255,.15));border-color:rgba(255,255,255,.16)}
+
+    .hero{padding:56px 0}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero h1{font-size:42px;margin:0 0 12px}
+    .hero p{color:var(--muted);font-size:18px;margin:0 0 22px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(63,189,241,.15);border:1px solid rgba(63,189,241,.35);color:#cfefff;font-weight:600}
+
+    /* Cards */
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow);overflow:hidden}
+    .card .pad{padding:18px}
+    .card h3{margin:0 0 6px}
+    .price{font-weight:800;font-size:24px}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b0c10;border:none;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.14)}
+
+    section{padding:24px 0}
+    section h2{margin:0 0 8px}
+    section>p{margin:0 0 16px;color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    @media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .gallery img{border-radius:14px;border:1px solid rgba(255,255,255,.06)}
+
+    /* Forms */
+    form{display:grid;gap:12px}
+    label{font-weight:600}
+    input,select,textarea{width:100%;padding:12px 14px;background:#0f141b;border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:12px}
+    textarea{min-height:90px}
+    .inline{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){.inline{grid-template-columns:1fr}}
+
+    .cart{background:#0d1117;border:1px dashed rgba(255,255,255,.2);border-radius:14px;padding:14px}
+    .cart .row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.12);padding:8px 0}
+    .cart .row:last-child{border-bottom:none}
+
+    footer{margin-top:40px;border-top:1px solid rgba(255,255,255,.06);background:#0b0d12}
+    .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
+    @media (max-width:900px){.foot{grid-template-columns:1fr}}
+
+    .badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#0f1720;border:1px solid rgba(255,255,255,.08);color:var(--muted)}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" data-nav>
+        <div class="logo-mark">ig</div>
+        <div>
+          <div class="brand">igprints.ie</div>
+          <div class="tag">Posters & Custom Print Studio</div>
+        </div>
+      </a>
+      <nav class="menu">
+        <a href="#home" data-nav class="active">Home</a>
+        <a href="#services" data-nav>Services</a>
+        <a href="#photos" data-nav>Photos</a>
+        <a href="#order" data-nav>Order</a>
+        <a href="#contact" data-nav>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME / ENTRANCE -->
+  <main id="home" class="route">
+    <div class="container hero">
+      <div class="hero-inner">
+        <div>
+          <span class="pill">Welcome to igprints.ie</span>
+          <h1>High‑quality mini & medium posters, A4, A3, and fully custom prints</h1>
+          <p>We’re a modern print studio delivering sharp colours, premium paper, and quick turnarounds across Ireland. Order standard sizes or request bespoke work — we make it easy.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+            <a class="btn" href="#order" data-nav>Place an Order</a>
+            <a class="btn ghost" href="#services" data-nav>View Services</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1557683311-eac922347aa1?q=80&w=1200&auto=format&fit=crop" alt="Vibrant poster wall" />
+        </div>
+      </div>
+    </div>
+
+    <section class="container">
+      <h2>What we do</h2>
+      <p>From bite‑size mini posters to big A3 statements, we print, package, and ship with care. Need a special size, finish, or bulk order? Our custom service has you covered.</p>
+      <div class="grid cols-3">
+        <div class="card"><div class="pad"><h3>Mini Posters</h3><p class="muted">Perfect for giveaways and collages.</p><div class="price">from €3</div></div></div>
+        <div class="card"><div class="pad"><h3>Medium Posters</h3><p class="muted">Great visibility at a compact size.</p><div class="price">from €7</div></div></div>
+        <div class="card"><div class="pad"><h3>A4 / A3</h3><p class="muted">Popular sizes for home & office.</p><div class="price">A4 from €8 · A3 from €12</div></div></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SERVICES (separate menu bar item) -->
+  <section id="services" class="route hidden">
+    <div class="container">
+      <h2>Services & Options</h2>
+      <p>Explore each service below and add items directly to your cart. Prices are indicative; final totals appear in checkout.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop" alt="Mini posters" />
+          <div class="pad">
+            <h3>Mini Posters</h3>
+            <p class="muted">Compact, fun, and perfect for events.</p>
+            <div class="price">from €3</div>
+            <button class="btn" onclick="quickAdd('Mini Poster','Mini',3)">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1529336953121-a1d0f0fd4c0c?q=80&w=1200&auto=format&fit=crop" alt="Medium posters" />
+          <div class="pad">
+            <h3>Medium Posters</h3>
+            <p class="muted">Crisp prints with presence.</p>
+            <div class="price">from €7</div>
+            <button class="btn" onclick="quickAdd('Medium Poster','Medium',7)">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1529927066849-66e1d4f3bc26?q=80&w=1200&auto=format&fit=crop" alt="A4 and A3" />
+          <div class="pad">
+            <h3>A4 & A3 Prints</h3>
+            <p class="muted">Everyday favourites, gallery feel.</p>
+            <div class="price">A4 €8 · A3 €12</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn" onclick="quickAdd('A4 Print','A4',8)">Add A4</button>
+              <button class="btn" onclick="quickAdd('A3 Print','A3',12)">Add A3</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1200&auto=format&fit=crop" alt="Custom work" />
+          <div class="pad">
+            <h3>Custom Work</h3>
+            <p class="muted">Any size, finish, or quantity. Get a quote.</p>
+            <div class="price">from €15</div>
+            <button class="btn" onclick="quickAdd('Custom Work','Custom',15)">Start Custom</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="Bulk & business" />
+          <div class="pad">
+            <h3>Bulk & Business</h3>
+            <p class="muted">Special pricing for 50+ units.</p>
+            <span class="badge">Volume Discounts</span>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop" alt="Eco inks" />
+          <div class="pad">
+            <h3>Eco Inks & Paper</h3>
+            <p class="muted">Sustainably sourced materials available.</p>
+            <span class="badge">Eco Option</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS (separate menu bar item) -->
+  <section id="photos" class="route hidden">
+    <div class="container">
+      <h2>Photos & Samples</h2>
+      <p>Browse a few sample shots of recent work and finishes.</p>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Sample 1" />
+        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1200&auto=format&fit=crop" alt="Sample 2" />
+        <img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?q=80&w=1200&auto=format&fit=crop" alt="Sample 3" />
+        <img src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?q=80&w=1200&auto=format&fit=crop" alt="Sample 4" />
+        <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1200&auto=format&fit=crop" alt="Sample 5" />
+        <img src="https://images.unsplash.com/photo-1512446816042-444d64126798?q=80&w=1200&auto=format&fit=crop" alt="Sample 6" />
+        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1200&auto=format&fit=crop" alt="Sample 7" />
+        <img src="https://images.unsplash.com/photo-1460411794035-42aac080490a?q=80&w=1200&auto=format&fit=crop" alt="Sample 8" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER & CHECKOUT -->
+  <section id="order" class="route hidden">
+    <div class="container">
+      <h2>Place an Order</h2>
+      <p>Choose a product, set quantity, upload artwork (optional), and add to cart. Then checkout securely. You’ll receive a thank‑you message after placing the order.</p>
+
+      <div class="grid cols-2">
+        <!-- Order form -->
+        <div class="card">
+          <div class="pad">
+            <h3>Create your item</h3>
+            <form id="orderForm">
+              <div class="inline">
+                <div>
+                  <label for="product">Product</label>
+                  <select id="product" required>
+                    <option value="Mini Poster" data-price="3">Mini Poster — from €3</option>
+                    <option value="Medium Poster" data-price="7">Medium Poster — from €7</option>
+                    <option value="A4 Print" data-price="8">A4 — from €8</option>
+                    <option value="A3 Print" data-price="12">A3 — from €12</option>
+                    <option value="Custom Work" data-price="15">Custom Work — from €15</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="size">Size</label>
+                  <select id="size" required>
+                    <option>Mini</option>
+                    <option>Medium</option>
+                    <option>A4</option>
+                    <option>A3</option>
+                    <option>Custom</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inline">
+                <div>
+                  <label for="quantity">Quantity</label>
+                  <input id="quantity" type="number" min="1" value="1" required />
+                </div>
+                <div>
+                  <label for="finish">Finish</label>
+                  <select id="finish">
+                    <option>Matte</option>
+                    <option>Gloss</option>
+                    <option>Silk</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="art">Upload artwork (optional)</label>
+                <input id="art" type="file" accept="image/*,application/pdf" />
+              </div>
+              <div>
+                <label for="notes">Notes</label>
+                <textarea id="notes" placeholder="Trim to edge, full bleed, specific colour, etc."></textarea>
+              </div>
+              <button class="btn" type="submit">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Cart & checkout -->
+        <div class="card">
+          <div class="pad">
+            <h3>Your Cart</h3>
+            <div id="cart" class="cart muted">No items yet.</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <div><strong>Total:</strong> <span id="total">€0.00</span></div>
+              <button class="btn ghost" id="clearCart">Clear Cart</button>
+            </div>
+          </div>
+          <div class="pad" style="border-top:1px solid rgba(255,255,255,.08)">
+            <h3>Checkout</h3>
+            <form id="checkoutForm">
+              <div class="inline">
+                <div>
+                  <label for="name">Full Name</label>
+                  <input id="name" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" type="email" required />
+                </div>
+              </div>
+              <div>
+                <label for="address">Shipping Address</label>
+                <textarea id="address" required></textarea>
+              </div>
+              <div class="inline">
+                <div>
+                  <label for="city">City</label>
+                  <input id="city" required />
+                </div>
+                <div>
+                  <label for="postal">Postal Code</label>
+                  <input id="postal" required />
+                </div>
+              </div>
+              <div>
+                <label for="notes2">Order Notes (optional)</label>
+                <textarea id="notes2" placeholder="Delivery preferences, schedule, etc."></textarea>
+              </div>
+              <button class="btn" type="submit">Place Order</button>
+            </form>
+            <div id="thankyou" class="hidden" style="margin-top:16px">
+              <div class="card" style="background:linear-gradient(135deg,rgba(41,211,152,.12),rgba(63,189,241,.12))">
+                <div class="pad">
+                  <h3>Thank you for your order! 🎉</h3>
+                  <p class="muted">We’ve received your details and will be in touch at <span id="tyEmail"></span> with confirmation. — Team igprints.ie</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="route hidden">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Questions or a special request? Reach out and we’ll help right away.</p>
+      <div class="grid cols-2">
+        <div class="card"><div class="pad">
+          <h3>Get in touch</h3>
+          <p class="muted">Email: <a href="mailto:hello@igprints.ie">hello@igprints.ie</a><br>Business hours: Mon–Sat, 9:00–18:00</p>
+          <p class="muted">Location: Ireland (nationwide shipping)</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3>Quick quote</h3>
+          <form id="quoteForm">
+            <div class="inline">
+              <div>
+                <label for="qproduct">Product</label>
+                <select id="qproduct"><option>Mini</option><option>Medium</option><option>A4</option><option>A3</option><option>Custom</option></select>
+              </div>
+              <div>
+                <label for="qqty">Qty</label>
+                <input id="qqty" type="number" min="1" value="50" />
+              </div>
+            </div>
+            <div class="inline">
+              <div>
+                <label for="qname">Name</label>
+                <input id="qname" />
+              </div>
+              <div>
+                <label for="qemail">Email</label>
+                <input id="qemail" type="email" />
+              </div>
+            </div>
+            <button class="btn" type="submit">Request Quote</button>
+          </form>
+          <div id="quoteThanks" class="hidden" style="margin-top:12px">
+            <span class="badge">Thanks! We’ll reply shortly.</span>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="brand" style="margin-top:16px">igprints.ie</div>
+        <p class="muted">Premium posters and custom print services. Fast, friendly, and reliable.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <p><a href="#home" data-nav>Home</a><br><a href="#services" data-nav>Services</a><br><a href="#photos" data-nav>Photos</a><br><a href="#order" data-nav>Order</a><br><a href="#contact" data-nav>Contact</a></p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <p class="muted">© <span id="year"></span> igprints.ie. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple router for hash links + active state
+    const routes = Array.from(document.querySelectorAll('.route'));
+    const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
+    function showRoute(hash){
+      const id = (hash||'#home').replace('#','');
+      routes.forEach(r=>r.classList.add('hidden'));
+      const el = document.getElementById(id) || document.getElementById('home');
+      el.classList.remove('hidden');
+      navLinks.forEach(a=>{
+        if(a.getAttribute('href') === '#'+id) a.classList.add('active'); else a.classList.remove('active');
+      });
+    }
+    window.addEventListener('hashchange',()=>showRoute(location.hash));
+    showRoute(location.hash||'#home');
+
+    // Cart logic (localStorage)
+    const cartEl = document.getElementById('cart');
+    const totalEl = document.getElementById('total');
+    const LS_KEY = 'igprints_cart_v1';
+    let cart = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+
+    function formatEUR(n){return new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'}).format(n)}
+    function saveCart(){localStorage.setItem(LS_KEY, JSON.stringify(cart));renderCart()}
+
+    function renderCart(){
+      if(!cart.length){cartEl.innerHTML='No items yet.'; totalEl.textContent=formatEUR(0); return}
+      let html=''; let sum=0;
+      cart.forEach((item,idx)=>{
+        const line=item.price*item.qty; sum+=line;
+        html+=`<div class="row"><div><strong>${item.product}</strong> · ${item.size} · ${item.finish} × ${item.qty}</div><div>${formatEUR(line)} <a href="#" data-rm="${idx}" style="color:#ff8086;margin-left:8px">Remove</a></div></div>`
+      })
+      cartEl.innerHTML=html; totalEl.textContent=formatEUR(sum);
+      cartEl.querySelectorAll('[data-rm]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();cart.splice(+a.dataset.rm,1);saveCart()}))
+    }
+
+    function quickAdd(product,size,price){
+      const existing = cart.find(x=>x.product===product && x.size===size && x.finish==='Matte');
+      if(existing){existing.qty+=1}else{cart.push({product,size,qty:1,finish:'Matte',price})}
+      saveCart();
+      location.hash = '#order';
+    }
+
+    renderCart();
+
+    // Order form -> add to cart
+    document.getElementById('orderForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const product = document.getElementById('product');
+      const price = +product.selectedOptions[0].dataset.price;
+      const item = {
+        product: product.value,
+        size: document.getElementById('size').value,
+        qty: Math.max(1, +document.getElementById('quantity').value||1),
+        finish: document.getElementById('finish').value,
+        price
+      };
+      cart.push(item); saveCart();
+      alert('Added to cart!');
+    });
+
+    // Clear cart
+    document.getElementById('clearCart').addEventListener('click',()=>{cart=[];saveCart()});
+
+    // Checkout -> thank you note
+    document.getElementById('checkoutForm').addEventListener('submit',(e)=>{
+      e.preventDefault();
+      if(!cart.length){alert('Your cart is empty.');return}
+      const email = document.getElementById('email').value.trim();
+      // In production: send details to your backend here.
+      document.getElementById('tyEmail').textContent = email || 'your email';
+      document.getElementById('thankyou').classList.remove('hidden');
+      cart = []; saveCart();
+      e.target.reset();
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // Quote mini-form
+    document.getElementById('quoteForm').addEventListener('submit',(e)=>{e.preventDefault();document.getElementById('quoteThanks').classList.remove('hidden')});
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

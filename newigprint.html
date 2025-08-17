@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>igprints.ie - Posters & Custom Prints</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 0; padding: 0;}
+    header {background: #222; color: #fff; padding: 15px; text-align: center; position: sticky; top: 0;}
+    nav ul {list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; background: #333;}
+    nav ul li {margin: 0 15px;}
+    nav ul li a {color: #fff; text-decoration: none; padding: 10px; display: block;}
+    nav ul li a:hover {background: #555; border-radius: 5px;}
+    section {padding: 40px;}
+    .services {display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;}
+    .service {border: 1px solid #ccc; padding: 20px; border-radius: 10px; text-align: center;}
+    .photos {display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;}
+    .photos img {width: 100%; border-radius: 10px; cursor: pointer; transition: 0.3s;}
+    .photos img:hover {transform: scale(1.05);}
+    .lightbox {display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center;}
+    .lightbox img {max-width: 90%; max-height: 90%; border-radius: 10px;}
+    .lightbox:target {display: flex;}
+    footer {background: #222; color: #fff; text-align: center; padding: 20px; margin-top: 40px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to igprints.ie</h1>
+    <p>We create mini, medium, A4, A3 posters & custom prints.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>At igprints.ie, we provide high-quality posters of various sizes including Mini, Medium, A4, A3, and custom work. Explore our services and order easily online.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service">Mini Posters</div>
+      <div class="service">Medium Posters</div>
+      <div class="service">A4 Posters</div>
+      <div class="service">A3 Posters</div>
+      <div class="service">Custom Work</div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2>Our Work</h2>
+    <div class="photos">
+      <a href="#img1"><img src="file-LgCm3Dtc7DpkXZueCWT9Rm" alt="Poster Sample"></a>
+      <a href="#img2"><img src="file-EMGAmg6YVP62Apt247hHCh" alt="Poster Sample"></a>
+      <a href="#img3"><img src="file-E6G8jhQLQLSRRuwmsHheTp" alt="Poster Sample"></a>
+      <a href="#img4"><img src="file-WCrdhEtDqJrZKivB5ryetc" alt="Poster Sample"></a>
+      <a href="#img5"><img src="file-Ncs7mMq5oQtHfVLKxQyBQF" alt="Poster Sample"></a>
+      <a href="#img6"><img src="file-VYrbYPFrkdQRuDiJ9gyeCn" alt="Poster Sample"></a>
+      <a href="#img7"><img src="file-YNFkgNG6nG1KkdASkSKvjH" alt="Poster Sample"></a>
+      <a href="#img8"><img src="file-WuHJ6LD2CTRPKJh92vfNri" alt="Poster Sample"></a>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="img1" class="lightbox"><img src="file-LgCm3Dtc7DpkXZueCWT9Rm"></div>
+    <div id="img2" class="lightbox"><img src="file-EMGAmg6YVP62Apt247hHCh"></div>
+    <div id="img3" class="lightbox"><img src="file-E6G8jhQLQLSRRuwmsHheTp"></div>
+    <div id="img4" class="lightbox"><img src="file-WCrdhEtDqJrZKivB5ryetc"></div>
+    <div id="img5" class="lightbox"><img src="file-Ncs7mMq5oQtHfVLKxQyBQF"></div>
+    <div id="img6" class="lightbox"><img src="file-VYrbYPFrkdQRuDiJ9gyeCn"></div>
+    <div id="img7" class="lightbox"><img src="file-YNFkgNG6nG1KkdASkSKvjH"></div>
+    <div id="img8" class="lightbox"><img src="file-WuHJ6LD2CTRPKJh92vfNri"></div>
+  </section>
+
+  <section id="order">
+    <h2>Place Your Order</h2>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your order!'); this.reset();">
+      <label>Name:</label><br>
+      <input type="text" required><br><br>
+      <label>Email:</label><br>
+      <input type="email" required><br><br>
+      <label>Poster Type:</label><br>
+      <select required>
+        <option>Mini</option>
+        <option>Medium</option>
+        <option>A4</option>
+        <option>A3</option>
+        <option>Custom</option>
+      </select><br><br>
+      <label>Details:</label><br>
+      <textarea required></textarea><br><br>
+      <button type="submit">Submit Order</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@igprints.ie</p>
+    <p>Phone: +353-XXX-XXXXXX</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 igprints.ie - All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
